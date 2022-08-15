@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: rgb(157, 157, 157);
+    text-align: center;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+#nav {
+    padding-left: 25%;
+    z-index: 1;
+    position: absolute;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+#main {
+    text-align: center;
+    margin: 15vmin;
+    z-index: -1
+}
+
+.floor {
+    margin: auto;
+    height: 80vmin;
+    aspect-ratio: 1/ 1;
+    transform: rotateX(45deg) rotateZ(45deg);
+    transform-style: preserve-3d;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.top {
+    grid-column: 1 / span 3;
+    width: 100%;
+}
+
+.tile,
+.tile:after,
+.tile:before {
+    content: '';
+    float: right;
+    position: relative;
+    aspect-ratio: 1/ 1;
+    z-index: 1;
+}
+
+/* Top */
+.tile {
+    background-color: rgb(244, 190, 255);
+    /* position: relative; */
+    /* -webkit-transform: translateZ(10em); */
+    transform-style: preserve-3d;
+    margin: 0px;
+    padding: 0px;
+    height: 15vmin;
+    /* padding: 0px; */
+}
+
+/* Left */
+.tile:after {
+    height: 15vmin;
+    background-color: rgb(250, 156, 255);
+    transform: rotateX(-90deg) translateY(15vmin) translateZ(-15vmin);
+    transform-origin: 100% 100%;
+}
+
+/* Right */
+.tile:before {
+    height: 15vmin;
+    background-color: rgb(255, 111, 255);
+    transform: rotateY(90deg) translateX(15vmin);
+    transform-origin: 100% 0;
+}
+
+.inner,
+.inner:after,
+.inner:before {
+    content: '';
+    float: right;
+    position: relative;
+    transform: translateZ(10vmin) translateX(2.5vmin) translateY(2.5vmin);
+    /* transition: top ease 10s; */
+}
+
+.inner:hover {
+    margin: -10px;
+}
+
+/* Top */
+.inner {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    transform-style: preserve-3d;
+    margin: 0px;
+    padding: 0px;
+    height: 10vmin;
+    width: 10vmin;
+    animation-name: inner-main;
+    animation: inner-main 5s ease-in-out;
+}
+
+/* Left */
+.inner:after {
+    height: 20vmin;
+    width: 10vmin;
+    background-color: rgb(223, 220, 255);
+    transform: rotateX(-90deg) translateY(20vmin) translateX(0vmin) translateZ(-30vmin);
+    transform-origin: 100% 100%;
+}
+
+/* Right */
+.inner:before {
+    height: 20vmin;
+    width: 10vmin;
+    background-color: rgb(118, 175, 249);
+    transform: rotateZ(-90deg) rotateX(90deg) translateY(-20vmin) translateZ(0vmin) translateX(0vmin);
+    transform-origin: 100% 0;
+}
+
+.inner:active {
+    animation-name: inner-main;
+    animation-duration: 5s ease-in-out infinite alternate;
+}
+
+/* The animation code */
+@keyframes inner-main {
+    25% {
+        transform: translateZ(10vmin) translateX(2.5vmin) translateY(2.5vmin);
+    }
+    50% {
+        transform: translateZ(40vmin) translateX(2.5vmin) translateY(2.5vmin);
+    }
+    75% {
+        transform: translateZ(40vmin) translateX(2.5vmin) translateY(2.5vmin) scale(2.0);
+    }
+    80% {
+        transform: translateZ(40vmin) translateX(2.5vmin) translateY(2.5vmin) scale(1.0);
+    }
+    100% {
+        transform: translateZ(10vmin) translateX(2.5vmin) translateY(2.5vmin) scale(1.0);
+    }
+}
+  
